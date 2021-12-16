@@ -1,0 +1,29 @@
+.table-div-lol #project, #employees{
+    font-family: Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 90%;
+    margin-left: 220px;
+}
+.show-text {
+    margin-left: 220px;
+}
+
+.table-div-lol td, .table-div-lol th,  #project td, #employees th{
+    border: 1px solid #ddd;
+    padding: 8px;
+    border-collapse: collapse;
+
+}
+
+.table-div-lol tr:nth-child(even){background-color: #f2f2f2;}
+
+.table-div-lol tr:hover {background-color: #ddd;}
+
+.table-div-lol th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #04AA6D;
+    color: white;
+
+}

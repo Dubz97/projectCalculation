@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+    <meta charset="UTF-8">
+    <title>Create Project</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<body>
+
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+       class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+        <i class="fa fa-remove"></i>
+    </a>
+    <h4 class="w3-bar-item"><b>Menu</b></h4>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/createProject">Create project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/employeeTask">Create employee task</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/show">Show project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/editProject">Edit project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/editEmployeeTask">Edit employee tasks</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/deleteRow">Delete project</a>
+
+</nav>
+<div class="w3-main" style="margin-left:220px">
+<p>Create new project</p>
+<form action="/createProject" method="post"  th:object="${project}">
+    <div class="boxLogin">
+        <input class="text" type="text" placeholder="Enter project name" th:field="*{name}" required>
+        <input class="text" type="text" placeholder="Enter time frame in hours" th:field="*{timeFrame}" required>
+        <input class="text" type="text" placeholder="Enter time used in hours" th:field="*{timeUsed}" required>
+        <input class="text" type="text" placeholder="Enter time left in hours" th:field="*{timeLeft}" required>
+
+        <button type="submit" class="save">Save project</button>
+
+<!--        Viser 0.0 ved doubles-->
+
+    </div>
+
+    <script>
+        // Get the Sidebar
+        var mySidebar = document.getElementById("mySidebar");
+
+        // Get the DIV with overlay effect
+        var overlayBg = document.getElementById("myOverlay");
+    </script>
+</form>
+</div>
+</body>
+</html>

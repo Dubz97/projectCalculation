@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show project</title>
+    <link rel="stylesheet" href="showPage.css" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+</head>
+<body>
+
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+       class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+        <i class="fa fa-remove"></i>
+    </a>
+    <h4 class="w3-bar-item"><b>Menu</b></h4>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/createProject">Create project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/employeeTask">Create employee task</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/show">Show project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/editProject">Edit project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/editEmployeeTask">Edit employee tasks</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/deleteRow">Delete project</a>
+</nav>
+
+<div class="table-div-lol">
+    <div class="show-text" style="margin-left: 220px">
+    <h2>Show project</h2></div>
+    <table id="project">
+        <br>
+        <tr>
+            <th>Project Id</th>
+            <th>Project Name</th>
+            <th>Case Id</th>
+            <th>Time Frame</th>
+            <th>Time Used</th>
+            <th>Time Left</th>
+        </tr>
+
+        <tr th:each="project : ${projectList}">
+            <td th:text="${project.projectId}"></td>
+            <td th:text="${project.name}"></td>
+            <td th:text="${project.caseId}"></td>
+            <td th:text="${project.timeFrame}"></td>
+            <td th:text="${project.timeUsed}"></td>
+            <td th:text="${project.timeLeft}"></td>
+
+        </tr>
+    </table>
+    <br>
+    <!--    <div class="w3-main" style="margin-left:220px">-->
+    <table id="employees">
+        <tr>
+            <th>Employee</th>
+            <th>Task name</th>
+            <th>Start date</th>
+            <th>End date</th>
+            <th>Time used</th>
+            <th>Time Left</th>
+            <th>Task ID</th>
+            <th>Project ID</th>
+
+        </tr>
+        <tr th:each="employeeTasks : ${EmployeeTaskList}">
+            <td th:text="${employeeTasks.employee}"></td>
+            <td th:text="${employeeTasks.tasks}"></td>
+            <td th:text="${employeeTasks.startDate}"></td>
+            <td th:text="${employeeTasks.endDate}"></td>
+            <td th:text="${employeeTasks.timeUsed}"></td>
+            <td th:text="${employeeTasks.timeLeft}"></td>
+            <td th:text="${employeeTasks.taskId}"></td>
+            <td th:text="${employeeTasks.projectId}"></td>
+
+        </tr>
+    </table>
+
+<br>
+    <form method="post" action="/showFilter" style="margin-left: 220px">
+        <br>
+        <div class="col-lg-3" th:object="${projectList}">
+            <select class="form-control" id="tasks" name="tasks">
+                <option value="">Select project id</option>
+                <option th:each="project : ${projectList}"
+                        th:value="${project.projectId}"
+                        th:text="${project.projectId}+' : '+${project.name}"></option>
+            </select>
+
+        </div>
+        <br>
+
+
+        <div class="col-lg-3" th:object="${employeeProjectList}">
+            <select class="form-control" id="employeeTasks" name="employeeTasks">
+                <option value="">Select employee</option>
+                <option th:each="project : ${employeeProjectList}"
+                        th:value="${project.taskId}"
+                        th:text="${project.taskId}+' : '+${project.employee}"></option>
+            </select>
+            <button type="submit" class="save">Apply filter</button>
+
+        </div>
+    </form>
+</div>
+</body>
+</html>

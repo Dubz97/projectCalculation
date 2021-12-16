@@ -1,0 +1,28 @@
+.wrapper {
+    text-align: center;
+}
+.text {
+    position: absolute;
+    left: 45%;
+    top: 30%;
+    color: black;
+    width: 10%;
+}
+
+
+.box {
+    background-image: url(NyBG.JPG);
+    padding: 350px;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.createbtn {
+    background-color: blue;
+    color: white;
+    left: 45%;
+    cursor: pointer;
+    position: fixed;
+    top: 50%;
+    width: 10%;
+}
