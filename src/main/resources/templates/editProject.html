@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit project</title>
+    <link rel="stylesheet" href="editProject2.css" type="text/css"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<style>
+    .container #project  {
+        font-family: Arial, Helvetica, sans-serif;
+        border-collapse: collapse;
+        width: 80%;
+        margin-left: 220px;
+    }
+
+    .container td, .container th, #project td, #project th{
+        border: 1px solid #ddd;
+        padding: 8px;
+        border-collapse: collapse;
+    }
+
+    .container tr:nth-child(even) #project   {background-color: #f2f2f2;}
+
+    .container tr:hover #project {background-color: #ddd;}
+
+    .container th #project{
+        padding-top: 12px;
+        padding-bottom: 12px;
+        text-align: left;
+        background-color: #04AA6D;
+        color: white;
+    }
+</style>
+<body>
+
+
+
+<!-- Sidebar -->
+<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+    <a href="javascript:void(0)" onclick="w3_close()"
+       class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+        <i class="fa fa-remove"></i>
+    </a>
+    <h4 class="w3-bar-item"><b>Menu</b></h4>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/createProject">Create project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/employeeTask">Create employee task</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/show">Show project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/editProject">Edit project</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/editEmployeeTask">Edit employee tasks</a>
+    <a class="w3-bar-item w3-button w3-hover-black" href="/deleteRow">Delete project</a>
+
+</nav>
+<div class="container">
+    <div class="show-text" style="margin-left: 220px">
+        <h2>Edit project</h2></div>
+    <form action="/editProject" method="post"  th:object="${projectList}">
+        <table id="project">
+            <tr>
+                <th>Project Id</th>
+                <th>Project Name</th>
+                <th>Case Id</th>
+                <th>Time Frame</th>
+                <th>Time Used</th>
+                <th>Time Left</th>
+                <th>Percentage done</th>
+                <th>Save Project</th>
+
+            </tr>
+            <tr th:each="project : ${projectList}" method="post" th:object="${projectList}">
+                <td th:field="${project.projectId}" th:text="${project.projectId}"></td>
+                <td th:field="${project.name} "><input th:text="${project.name}"></td>
+                <td th:field="${project.caseId}" th:text="${project.caseId}"></td>
+                <td th:field="${project.timeFrame}"><input th:text="${project.timeFrame}"></td>
+                <td th:field="${project.timeUsed}"><input th:text="${project.timeUsed}"></td>
+                <td th:field="${project.timeLeft}"><input th:text="${project.timeLeft}"></td>
+                <td th:field="${project.percentageCalculated}" th:text="${project.percentageCalculated}"></td>
+
+                <td><button type="submit" class="save">Edit Project</button></td>
+
+
+            </tr>
+        </table>
+    </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+
+
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="/LoginStyle.css" type="text/css"/>
+
+<body>
+
+<p>Login</p>
+<div class="boxLogin">
+
+    <form action="/login/index" method="post"  th:object="${user}">
+
+        <div class="container">
+            <input class="text" type="text" placeholder="Enter Username" th:field="*{username}" required>
+            <input class="text" type="password" placeholder="Enter Password" th:field="*{password}" required>
+
+            <button  type="submit">Login</button>
+
+            <label>
+                <input type="checkbox" checked="checked" name="remember"> Remember me
+            </label>
+
+
+        <div th:if="${loginError}">
+            <p>Brugernavn eller kodeord er forkert, prøv igen.</p>
+        </div>
+        <div th:if="${loginSucces}">
+            <p>Login success</p>
+        </div>
+        </div>
+        <div class="container" style="background-color:#f1f1f1">
+            <button  type="button" class="cancelbtn">Cancel</button>
+
+
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+
+    </form>
+    <form action="/create" style="margin-left: 1%" method="get">
+        <div>
+            <button type="submit" class="createbtn">Create account</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
